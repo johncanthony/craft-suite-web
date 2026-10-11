@@ -25,5 +25,7 @@ LABEL org.opencontainers.image.title="craft-suite-web" \
       org.opencontainers.image.source="https://github.com/johncanthony/craft-suite-web"
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=assemble /src/site/ /usr/share/nginx/html/
+# Fail the build on a bad config rather than crash-looping on the cluster.
+RUN nginx -t
 EXPOSE 8080
 HEALTHCHECK --interval=30s --timeout=3s CMD wget -qO- http://127.0.0.1:8080/healthz >/dev/null || exit 1

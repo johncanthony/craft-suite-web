@@ -1,0 +1,82 @@
+# Hostnames that may appear as strings in the apps' JS and WebAssembly.
+# scripts/scan.sh fails the build on any host not listed here, so a new
+# outbound endpoint in an upstream release stops the rebuild for review.
+#
+# A host listed here is NOT necessarily contacted at runtime. Each entry
+# says why it is in the binary. Reviewed 2026-10-11 against the sources.
+#
+# Global section (no header): allowed in every app. "[path]" sections add
+# per-app allowances.
+
+# XML / RDF / document-format namespaces baked into codecs. Never fetched.
+www.w3.org
+ns.adobe.com
+purl.org
+purl.oclc.org
+schemas.microsoft.com
+schemas.openxmlformats.org
+www.aiim.org
+www.iso.org
+www.npes.org
+www.xfa.org
+www.idpf.org
+www.color.org
+www.inkscape.org
+www.serif.com
+www.musicxml.org
+www.zotero.org
+iptc.org
+cipa.jp
+ns.apple.com
+ns.google.com
+www.metadataworkinggroup.com
+example.org
+
+# Attribution comments in shaders and code, bug-tracker hints in error
+# messages, and links shown in About dialogs. Never fetched.
+blog.demofox.org
+www.shadertoy.com
+docs.rs
+github.com
+getartcraft.com
+discord.gg
+developer.mozilla.org
+
+[lightcraft]
+# Model catalog metadata (AuraFace, SFace): source and licence URLs shown in
+# the UI. The download code (crates/segment/fetch, crates/faces) is
+# cfg(not(wasm32)); the web build cannot fetch models.
+huggingface.co
+# Camera tone-curve data files cite their CC0 sample raws by URL. Data only.
+raw.pixls.us
+# "Show on Map": opens the photo's GPS position in a new tab when clicked.
+www.openstreetmap.org
+# Own XMP namespace.
+ns.lightcraft.app
+
+[filmcraft]
+# Whisper / Kokoro model catalog (crates/speech, crates/tts): source and
+# licence URLs shown in the download dialog. Downloads use ureq (native
+# only) into a data directory the web build does not have.
+huggingface.co
+
+[effectcraft]
+# Model registry (MobileSAM, MediaPipe Face Landmarker): homepage, licence
+# and weight URLs with pinned SHA-256. Weights are fetched on demand by the
+# desktop app; the web app has no model download path.
+developers.google.com
+raw.githubusercontent.com
+storage.googleapis.com
+
+[launcher]
+# The launcher's web catalog lists releases by calling the GitHub API from
+# the visitor's browser (read-only, unauthenticated, 60 req/h per IP).
+api.github.com
+raw.githubusercontent.com
+# Icon-font licence attribution and social links in the footer.
+fontawesome.com
+www.youtube.com
+www.instagram.com
+www.linkedin.com
+www.tiktok.com
+x.com

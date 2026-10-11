@@ -1,0 +1,19 @@
+# path	repo	version	zipbase	title	blurb
+# One line per app. `path` is the URL prefix under the site root and the
+# directory under site/. The release zip is <zipbase>-<version>.zip from
+# https://github.com/<repo>/releases/download/v<version>/ and is verified
+# against that release's SHA256SUMS.txt before it is unpacked.
+# Bump `version` to update an app; CI rebuilds the image.
+photocraft	storytold/photocraft	0.7.0	photocraft-web	PhotoCraft	Image editing: layers, masks, type and real PSD files
+lightcraft	storytold/lightcraft	0.6.0	lightcraft-web	LightCraft	Photo library and raw development
+filmcraft	storytold/filmcraft	0.6.0	filmcraft-web	FilmCraft	Video editing, color and sound
+vectorcraft	storytold/vectorcraft	0.9.0	vectorcraft-web	VectorCraft	Vector illustration
+pdfcraft	storytold/pdfcraft	0.6.0	pdfcraft-web	PdfCraft	Reading, organizing and protecting PDFs
+effectcraft	storytold/effectcraft	0.8.0	effectcraft-web	EffectCraft	Motion graphics and visual effects
+designcraft	storytold/designcraft	0.6.0	designcraft-web	DesignCraft	Page layout and publishing
+gridcraft	storytold/gridcraft	0.5.0	gridcraft-web	GridCraft	Spreadsheets and data
+wordcraft	storytold/wordcraft	0.5.0	wordcraft-web	WordCraft	Word processing and documents
+deckcraft	storytold/deckcraft	0.5.0	deckcraft-web	DeckCraft	Presentations and slide decks
+cadcraft	storytold/cadcraft	0.5.0	cadcraft-web	CADCraft	Computer-aided design
+soundcraft	storytold/soundcraft	0.5.0	soundcraft-web	SoundCraft	Audio recording and editing
+launcher	storytold/craft-launcher	0.3.2	artcraft-launcher-web	ArtCraft Launcher	Release catalog with download links (calls api.github.com from the browser)

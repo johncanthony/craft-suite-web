@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The Craft App Suite: open-source creative tools for image, motion, design and documents, running entirely in your browser.">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#131316" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+  <title>Craft Suite</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2318181c'/%3E%3Ccircle cx='12' cy='13' r='6' fill='%23e8679f'/%3E%3Ccircle cx='20' cy='13' r='6' fill='%236f8ff0' fill-opacity='.9'/%3E%3Ccircle cx='16' cy='20' r='6' fill='%23e9b94a' fill-opacity='.9'/%3E%3C/svg%3E">
+  <style>
+@@CSS@@
+  </style>
+</head>
+<body>
+  <div class="sky" aria-hidden="true"><i></i><i></i><i></i></div>
+
+  <header class="hero">
+    <p class="eyebrow"><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span> Craft App Suite</p>
+    <h1>Make <em>something.</em></h1>
+    <p class="lede">Thirteen open-source studio tools for image, motion, design and documents. Each one runs entirely in your browser: nothing you make is uploaded, and your work saves as a file on your own device.</p>
+    <ul class="facts">
+      <li>No accounts</li>
+      <li>No uploads</li>
+      <li>No telemetry</li>
+      <li>WebGPU or WebGL2</li>
+    </ul>
+  </header>
+
+  <main>
+@@SECTIONS@@
+  </main>
+
+  <footer>
+    <p>The apps are the <a href="https://getartcraft.com/apps">Craft App Suite</a> by storytold, MIT / Apache-2.0, packaged unchanged from their signed releases. There is no autosave: save or export before you close the tab.</p>
+    <p class="build">Served by <a href="https://github.com/johncanthony/craft-suite-web">craft-suite-web</a> build <span>@@BUILD_SHA@@</span> · <span>@@BUILD_DATE@@</span></p>
+  </footer>
+</body>
+</html>

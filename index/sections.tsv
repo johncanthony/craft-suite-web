@@ -1,0 +1,7 @@
+# id	title	blurb	apps (space separated paths from apps.tsv)
+# Apps not listed in any section are appended under "More".
+image	Image	Photographs, raw files and pixels.	photocraft lightcraft
+motion	Motion & Sound	Video, visual effects and audio.	filmcraft effectcraft soundcraft
+design	Design	Vectors, layout and 3D.	vectorcraft designcraft cadcraft
+documents	Documents	Words, numbers, slides and PDFs.	wordcraft gridcraft deckcraft pdfcraft
+desktop	Desktop	Prefer a native app? Every tool also ships for Mac, Windows and Linux.	launcher

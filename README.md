@@ -16,8 +16,9 @@ outbound hostnames, gzipped, and copied into `nginxinc/nginx-unprivileged`.
 | `apps.tsv` | The single source of truth: each app's repo, pinned version, zip name and title |
 | `scan-allowlist.txt` | Hostnames allowed to appear in the apps' JS/wasm; anything else fails the build |
 | `scripts/fetch.sh` | Download, verify sha256, unpack into `site/<path>/` |
-| `scripts/scan.sh` | Extract hostnames from `.js` and `.wasm`, compare with the allowlist |
-| `scripts/build-index.sh` | Generate the root `index.html` listing apps and versions |
+| `scripts/scan.sh` | Extract hostnames from every `.js` and `.wasm` (recursively, and from PhotoCraft's gzipped `app/*.part-*`), compare with the allowlist |
+| `index/` | The landing page: `template.html`, `style.css`, `sections.tsv` (how apps are grouped) and one inline SVG glyph per app in `icons/` |
+| `scripts/build-index.sh` | Assemble `index/` and `apps.tsv` into the root `index.html`: one self-contained file, no scripts, no external requests |
 | `scripts/precompress.sh` | Write `.gz` beside every compressible file for `gzip_static` |
 | `nginx.conf` | Wasm MIME type, cache headers, no SPA fallback, `/healthz` |
 | `Dockerfile` | Stage 1 assembles on the build host's arch; stage 2 copies into multi-arch nginx |
@@ -48,6 +49,11 @@ WebGPU and clipboard). Open uses the browser file picker, Save and Export downlo
 file. Preferences live in `localStorage`, scoped to the origin and shared across the
 apps on one hostname. No server-side storage, no accounts, no telemetry: the only
 network calls are to this server for the page, the wasm and optional fonts.
+
+PhotoCraft (0.15+) ships its WebAssembly gzipped and cut into `app/<name>-<hash>.part-aa`,
+`-ab`, … listed in `app/parts.txt`; the page downloads and inflates them itself. nginx serves
+the parts byte for byte (no `.gz` twin, no `Content-Encoding`), caches them as immutable, and
+revalidates `app/parts.txt` and `app/photocraft-web.js` like `index.html`.
 
 The one exception is `/launcher/`, the ArtCraft Launcher catalog, which calls
 `api.github.com` from the browser to list releases. It is allowlisted for that app only.

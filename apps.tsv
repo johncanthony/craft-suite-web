@@ -4,16 +4,16 @@
 # https://github.com/<repo>/releases/download/v<version>/ and is verified
 # against that release's SHA256SUMS.txt before it is unpacked.
 # Bump `version` to update an app; CI rebuilds the image.
-photocraft	storytold/photocraft	0.7.0	photocraft-web	PhotoCraft	Image editing: layers, masks, type and real PSD files
-lightcraft	storytold/lightcraft	0.6.0	lightcraft-web	LightCraft	Photo library and raw development
-filmcraft	storytold/filmcraft	0.6.0	filmcraft-web	FilmCraft	Video editing, color and sound
-vectorcraft	storytold/vectorcraft	0.9.0	vectorcraft-web	VectorCraft	Vector illustration
-pdfcraft	storytold/pdfcraft	0.6.0	pdfcraft-web	PdfCraft	Reading, organizing and protecting PDFs
-effectcraft	storytold/effectcraft	0.8.0	effectcraft-web	EffectCraft	Motion graphics and visual effects
-designcraft	storytold/designcraft	0.6.0	designcraft-web	DesignCraft	Page layout and publishing
-gridcraft	storytold/gridcraft	0.5.0	gridcraft-web	GridCraft	Spreadsheets and data
-wordcraft	storytold/wordcraft	0.5.0	wordcraft-web	WordCraft	Word processing and documents
-deckcraft	storytold/deckcraft	0.5.0	deckcraft-web	DeckCraft	Presentations and slide decks
-cadcraft	storytold/cadcraft	0.5.0	cadcraft-web	CADCraft	Computer-aided design
-soundcraft	storytold/soundcraft	0.5.0	soundcraft-web	SoundCraft	Audio recording and editing
-launcher	storytold/craft-launcher	0.3.2	artcraft-launcher-web	ArtCraft Launcher	Release catalog with download links (calls api.github.com from the browser)
+photocraft	storytold/photocraft	0.15.1	photocraft-web	PhotoCraft	Layers, masks, type and real PSD files.
+lightcraft	storytold/lightcraft	0.13.0	lightcraft-web	LightCraft	A photo library with raw development, kept in your browser.
+filmcraft	storytold/filmcraft	0.12.0	filmcraft-web	FilmCraft	Cut, colour and mix video on a timeline.
+vectorcraft	storytold/vectorcraft	0.16.0	vectorcraft-web	VectorCraft	Illustration with paths, shapes and type.
+pdfcraft	storytold/pdfcraft	0.13.0	pdfcraft-web	PdfCraft	Read, rearrange, annotate and protect PDFs.
+effectcraft	storytold/effectcraft	0.16.0	effectcraft-web	EffectCraft	Motion graphics, compositing and visual effects.
+designcraft	storytold/designcraft	0.12.0	designcraft-web	DesignCraft	Page layout for print and screen.
+gridcraft	storytold/gridcraft	0.11.1	gridcraft-web	GridCraft	Spreadsheets, formulas and charts.
+wordcraft	storytold/wordcraft	0.10.0	wordcraft-web	WordCraft	Long-form writing with real typography.
+deckcraft	storytold/deckcraft	0.10.0	deckcraft-web	DeckCraft	Slide decks and presentations.
+cadcraft	storytold/cadcraft	0.12.0	cadcraft-web	CADCraft	Precise 2D and 3D computer-aided design.
+soundcraft	storytold/soundcraft	0.12.1	soundcraft-web	SoundCraft	Record, edit and master audio.
+launcher	storytold/craft-launcher	0.7.0	artcraft-launcher-web	ArtCraft Launcher	The ArtCraft release catalog. This page alone calls api.github.com from your browser.

@@ -24,9 +24,20 @@ apps | while IFS=$'\t' read -r path repo version zipbase title blurb; do
   # regex yields junk like "getartcraft.comhttps". Require a lowercase host
   # ending in a known TLD at a word boundary; concatenated junk then simply
   # fails to match, and the same host usually appears cleanly elsewhere.
-  hosts="$( { cat "$dir"/*.js; strings -n 8 "$dir"/*.wasm; } \
+  # Recurse: PhotoCraft 0.15 keeps its app in app/, EffectCraft has
+  # wasm-bindgen snippets/ and VectorCraft fonts/. Everything executable
+  # (.js, .mjs, .wasm) is scanned wherever it sits. An app with no host
+  # string at all is a valid (empty) result, not a failure.
+  # PhotoCraft 0.15+ ships its wasm gzipped and cut into app/*.part-aa,
+  # -ab, ... listed in order in app/parts.txt; strings cannot see through
+  # gzip, so inflate the concatenation and scan that too.
+  hosts="$( { find "$dir" -type f \( -name '*.js' -o -name '*.mjs' \) -exec cat {} +;
+              find "$dir" -type f -name '*.wasm' -exec strings -n 8 {} +;
+              find "$dir" -type f -name 'parts.txt' | while read -r list; do
+                grep -E '\.part-[a-z]+$' "$list" | sed "s#^#$(dirname "$list")/#" | xargs cat | gunzip -c | strings -n 8
+              done; } \
             | grep -oE "https?://[a-z0-9.-]+\\.($TLDS)\\b" \
-            | sed -E 's#^https?://##' | sort -u )"
+            | sed -E 's#^https?://##' | sort -u || true )"
   allowed="$( { global_allow; app_allow "$path"; } | sort -u )"
 
   bad="$(comm -23 <(printf '%s\n' "$hosts") <(printf '%s\n' "$allowed") || true)"
@@ -37,8 +48,8 @@ apps | while IFS=$'\t' read -r path repo version zipbase title blurb; do
 
   if [ -n "$bad" ] || [ -n "$denied" ]; then
     log "FAIL   $path v$version"
-    [ -n "$denied" ] && printf '         denied: %s\n' $denied >&2
-    [ -n "$bad" ]    && printf '         unknown: %s\n' $bad >&2
+    [ -z "$denied" ] || printf '         denied: %s\n' $denied >&2
+    [ -z "$bad" ]    || printf '         unknown: %s\n' $bad >&2
     echo fail >> "$CACHE/.scan-fail"
   else
     log "ok     $path v$version  ($(printf '%s\n' "$hosts" | grep -c . ) hosts, all allowlisted)"

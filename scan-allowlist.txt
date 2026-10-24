@@ -3,7 +3,7 @@
 # outbound endpoint in an upstream release stops the rebuild for review.
 #
 # A host listed here is NOT necessarily contacted at runtime. Each entry
-# says why it is in the binary. Reviewed 2026-10-11 against the sources.
+# says why it is in the binary. Reviewed 2026-10-11 and 2026-10-24 against the sources.
 #
 # Global section (no header): allowed in every app. "[path]" sections add
 # per-app allowances.
@@ -41,6 +41,14 @@ github.com
 getartcraft.com
 discord.gg
 developer.mozilla.org
+opensource.org
+
+[wordcraft]
+# TeX hyphenation patterns (hyph-utf8) embedded for line breaking; each
+# pattern file carries its licence header (LPPL, MIT) with these URLs.
+# Attribution text, never fetched.
+www.hyphenation.org
+www.latex-project.org
 
 [lightcraft]
 # Model catalog metadata (AuraFace, SFace): source and licence URLs shown in
@@ -53,6 +61,11 @@ raw.pixls.us
 www.openstreetmap.org
 # Own XMP namespace.
 ns.lightcraft.app
+# "Download Place Names (GeoNames)" for offline reverse geocoding (0.13.0,
+# crates/engine/src/cmd/geocode.rs). The download module and the
+# metadata.downloadPlaceNames command are cfg(not(target_arch = "wasm32")):
+# the web build shows the attribution string but cannot fetch the data.
+download.geonames.org
 
 [filmcraft]
 # Whisper / Kokoro model catalog (crates/speech, crates/tts): source and

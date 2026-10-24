@@ -10,6 +10,7 @@ RUN apk add --no-cache bash curl ca-certificates unzip gzip binutils coreutils g
 WORKDIR /src
 COPY apps.tsv scan-allowlist.txt ./
 COPY scripts/ scripts/
+COPY index/ index/
 ARG BUILD_SHA=dev
 ARG BUILD_DATE
 RUN ./scripts/fetch.sh \
